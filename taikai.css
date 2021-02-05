@@ -1,0 +1,177 @@
+body{
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/*全体の指定*/
+.form,
+.printspace{
+    margin: 5px;
+    padding: 3px;
+    border: 1px solid;
+}
+
+/*フォームの指定*/
+.tab4{
+    border-collapse: collapse;
+    border-spacing: 0;  
+    vertical-align: middle;
+    text-align: center;
+}
+
+.way{
+    width: 300px;
+}
+
+.cup_name{
+    width: 200px;
+}
+
+.people{
+    width: 50px;
+}
+
+.cost{
+    width: 75px;
+}
+
+.btn{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+  }
+  .btn:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+  }
+
+
+@media print{
+    #Form{
+        display: none;
+    }
+
+    #PrintSpace{
+        border: none;
+    }
+}
+
+/*印刷範囲の指定*/
+.printspace{
+    width: 780px;
+    height: 940px;
+}
+
+.title{
+    text-align: center;
+    font-size: 25px;
+}
+
+.subtitle,
+.printspace p{
+    text-align: center;
+}
+
+.printspace table{
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 650px;
+    border: 2px solid black;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.tab1 td{
+    width: 55px;
+    height: 55px;
+    text-align: center;
+}
+
+.tab2 tr{
+    height: 35px;
+}
+
+.cir{
+    border: black solid 0px;
+    border-radius: 50%;
+}
+
+.ti1{
+    width: 90px;
+    text-align: right;
+}
+
+.ti2{
+    width: 225px;
+    text-align: center;
+}
+
+.ti3{
+    width: 70px;
+}
+
+.ti4,
+.ti6{
+    width: 10px;
+}
+
+.tab3 th, td{
+    height: 35px;
+}
+
+.ti7{
+    width: 30px;
+    writing-mode: vertical-rl;
+}
+
+.ti9{
+    width: 250px;
+}
+
+.names,
+.pays,
+.ppl,
+.costs,
+.subtotal{
+    text-align: center;
+}
+
+.ti10{
+    width: 65px;
+}
+
+.ti11{
+    width: 45px;
+}
+
+.ti12{
+    width: 90px;
+}
+
+.ti14{
+    width: 30px;
+    writing-mode: vertical-rl;
+}
+
+.menu2{
+    height: 30px;
+}
+
+.ti15{
+    width: 310px;
+}
+
+.footer{
+    margin: 0 auto;
+    width: 630px;
+    font-size: 17px;
+}
+
