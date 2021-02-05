@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    flex-wrap: wrap;
+    display: flex;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
