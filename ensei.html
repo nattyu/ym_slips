@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="ensei.css">
+    <script src="ensei.js"></script>
+    <title>支出伝票（遠征費）</title>
+</head>
+<body>
+    <div class="form" id="Form" media="print">
+        <p>伝票記入フォーム</p>
+        <form class="forms" action="#" method="POST">
+            <p>申請日：<input type="date" id="order_date1"></p>
+            <p>大会名：<input type="text" id="cup" style="width: 400px;"></p>
+            <p>会場名：<input type="text" id="place"></p>
+            <p>主催名：<input type="text" id="held"></p>
+            <p>最寄り駅：<input type="text" id="station"></p>
+            <p>大会開催日：<input type="date" id="cup_date1"></p>
+            <p>団体名：<select id="teamname">
+                <option value="team0">団体名を選択</option>
+                <option value="サッカー">サッカー</option>
+                <option value="野球">野球</option>
+                <option value="ソフトテニス">ソフトテニス</option>
+                <option value="硬式テニス">硬式テニス</option>
+                <option value="吹奏楽">吹奏楽</option> 
+                </select>
+            </p>
+            <p>顧問指名：<input type="text" id="teachername"></p>
+            <p>部長指名：<input type="text" id="captainname"></p>
+            <p>内容</p>
+            <table class="tab4" border="1" id="order">
+                <tr>
+                    <td class="way">道順</td>
+                    <td class="how">交通手段</td>
+                    <td class="people">人数</td>
+                    <td class="cost">片道運賃</td>
+                </tr>
+                <tr>
+                    <td class="way">【草加駅】→ <input type="text" class="miti"></td>
+                    <td>
+                        <select class="how">
+                            <option value="電車">電車</option>
+                            <option value="バス">バス</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="people"></td>
+                    <td><input type="number" class="cost"></td>
+                </tr>
+                <tr>
+                    <td class="way"><input type="text" class="miti"> → <input type="text" class="miti"></td>
+                    <td>
+                        <select class="how">
+                            <option value="電車">電車</option>
+                            <option value="バス">バス</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="people"></td>
+                    <td><input type="number" class="cost"></td>
+                </tr>
+                <tr>
+                    <td class="way"><input type="text" class="miti"> → <input type="text" class="miti"></td>
+                    <td>
+                        <select class="how">
+                            <option value="電車">電車</option>
+                            <option value="バス">バス</option>
+                        </select>
+                    </td>
+                    <td><input type="number" class="people"></td>
+                    <td><input type="number" class="cost"></td>
+                </tr>
+            </table>
+            <p><input type="button" onclick="han()" value="反映する" class="btn"></p>
+            <p><input type="button" onclick="func_print()" value="印刷する" class="btn"></p>
+        </form>
+    </div>
+    <div class="printspace" id="PrintSpace">
+        <p class="title">生徒会費支出伝票　遠征費</p>
+        <p class="subtitle">令和　３　年度　　　　　　　　　　　　　　　　　　　　　　　　No.</p>
+        <table class="tab1" rules="all">
+            <tr>
+                <td>校長印</td><td></td><td>教頭印</td><td></td><td></td><td>事務長印</td><td></td><td>生徒会顧問印</td><td></td><td>生徒会会計印</td><td></td>
+            </tr>
+        </table>
+        <table class="tab2" border="1">
+            <tr>
+                <td colspan="6" id="CUP">【大会名】</td>
+            </tr>
+            <tr>
+                <td colspan="2" id="PLACE">【会場名】</td>
+                <td colspan="4" id="HELD">【主催】</td>
+            </tr>
+            <tr>
+                <td colspan="6" id="STATION">【最寄駅】</td>
+            </tr>
+            <tr>
+                <td colspan="6" id="cup_date2">【大会開催日】</td>
+            </tr>
+            <tr>
+                <th class="ti1">団体名：</th>
+                <td id="team" class="ti2"></td>
+                <th rowspan="3" class="ti3">請求額</th>
+                <td rowspan="3" class="ti4"></td>
+                <td rowspan="3" class="ti5" id="Total1">￥</td>
+                <td rowspan="3" class="ti6"></td>
+            </tr>
+            <tr>
+                <th class="ti1">顧問指名：</th>
+                <td id="teacher" class="ti2"></td>
+            </tr>
+            <tr>
+                <th class="ti1">部長指名：</th>
+                <td id="captain" class="ti2"></td>
+            </tr>
+        </table>
+        <table class="tab3" border="1" id="print">
+            <tr>
+                <th rowspan="6" class="ti7">請求書</th>
+                <th class="ti9" class="menu1">会場までの道順</th>
+                <th class="ti10" class="menu1">交通手段</th>
+                <th class="ti11" class="menu1">人数</th>
+                <th class="ti12" class="menu1">片道運賃</th>
+                <th class="ti13" class="menu1">小計</th>
+            </tr>
+            <tr>
+                <td class="ways"></td>
+                <td class="hows"></td>
+                <td class="ppl"></td>
+                <td class="fare"></td>
+                <td class="subtotal"></td>
+            </tr>
+            <tr>
+                <td class="ways"></td>
+                <td class="hows"></td>
+                <td class="ppl"></td>
+                <td class="fare"></td>
+                <td class="subtotal"></td>
+            </tr>
+            <tr>
+                <td class="ways"></td>
+                <td class="hows"></td>
+                <td class="ppl"></td>
+                <td class="fare"></td>
+                <td class="subtotal"></td>
+            </tr>
+            <tr>
+                <th colspan="2" align="right">合計　　</th>
+                <th colspan="3" align="left" id="Total2">￥</th>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">埼玉県立八潮南高等学校長　様<br>上記金額を請求いたします。</td>
+                <td colspan="3" align="center" id="order_date2">令和　３　年　　　　月　　　　日</td>
+            </tr>
+        </table>
+        <table rules="all">
+            <tr>
+                <th rowspan="2" class="ti14">領収書</th>
+                <td rowspan="2" class="ti15" align="center">埼玉県立八潮南高等学校長　様<br>上記金額を領収いたしました。</td>
+                <td class="ti16" align="left" class="menu2">顧問指名</td>
+            </tr>
+            <tr>
+                <td class="ti16" align="left">＜受領日＞<br>　　令和　3　年　　　　月　　　　日</td>
+            </tr>
+        </table>
+        <p class="footer">※請求人数は大会登録メンバー＋１名（マネージャー）とする。片道のみ支給。<br>
+            　＜大会選手名簿　等、参加者数が分かるものも貼付して下さい。＞<br>
+            ※請求対象の大会は、主催が高体連・高野連・高吹連・高文連のみとする。
+        </p>
+    </div>
+</body>
+</html>

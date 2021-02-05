@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="buhi.css">
+    <script src="buhi.js"></script>
+    <title>支出伝票（部費等）</title>
+</head>
+<body>
+    <div class="form" id="Form" media="print">
+        <p>伝票記入フォーム</p>
+        <form class="forms" action="#" method="POST">
+            <p>申請日：<input type="date" id="order_date1"></p>
+            <p>団体名：<select id="teamname">
+                <option value="team0">団体名を選択</option>
+                <option value="サッカー">サッカー</option>
+                <option value="野球">野球</option>
+                <option value="ソフトテニス">ソフトテニス</option>
+                <option value="硬式テニス">硬式テニス</option>
+                <option value="吹奏楽">吹奏楽</option> 
+                </select>
+            </p>
+            <p>顧問指名：<input type="text" id="teachername"></p>
+            <p>部長指名：<input type="text" id="captainname"></p>
+            <p>内訳</p>
+            <table class="tab4" border="1" id="order">
+                <tr>
+                    <td class="num">番号</td>
+                    <td>摘要</td>
+                    <td>数量</td>
+                    <td>単価</td>
+                    <td>備考</td>
+                </tr>
+                <tr>
+                    <td class="num">①</td>
+                    <td><input type="text" class="things" style="width: 200px;"></td>
+                    <td><input type="number" class="howmany" style="width: 50px;"></td>
+                    <td><input type="number" class="cost" style="width: 75px;"></td>
+                    <td><input type="text" class="remarks" style="width: 95px;"></p></td>
+                </tr>
+                <tr>
+                    <td class="num">②</td>
+                    <td><input type="text" class="things" style="width: 200px;"></td>
+                    <td><input type="number" class="howmany" style="width: 50px;"></td>
+                    <td><input type="number" class="cost" style="width: 75px;"></td>
+                    <td><input type="text" class="remarks" style="width: 95px;"></p></td>
+                </tr>
+                <tr>
+                    <td class="num">③</td>
+                    <td><input type="text" class="things" style="width: 200px;"></td>
+                    <td><input type="number" class="howmany" style="width: 50px;"></td>
+                    <td><input type="number" class="cost" style="width: 75px;"></td>
+                    <td><input type="text" class="remarks" style="width: 95px;"></p></td>
+                </tr>
+                <tr>
+                    <td class="num">④</td>
+                    <td><input type="text" class="things" style="width: 200px;"></td>
+                    <td><input type="number" class="howmany" style="width: 50px;"></td>
+                    <td><input type="number" class="cost" style="width: 75px;"></td>
+                    <td><input type="text" class="remarks" style="width: 95px;"></p></td>
+                </tr>
+                <tr>
+                    <td class="num">⑤</td>
+                    <td><input type="text" class="things" style="width: 200px;"></td>
+                    <td><input type="number" class="howmany" style="width: 50px;"></td>
+                    <td><input type="number" class="cost" style="width: 75px;"></td>
+                    <td><input type="text" class="remarks" style="width: 95px;"></p></td>
+                </tr>
+                <tr>
+                    <td class="num">⑥</td>
+                    <td><input type="text" class="things" style="width: 200px;"></td>
+                    <td><input type="number" class="howmany" style="width: 50px;"></td>
+                    <td><input type="number" class="cost" style="width: 75px;"></td>
+                    <td><input type="text" class="remarks" style="width: 95px;"></p></td>
+                </tr>
+                <tr>
+                    <td class="num">⑦</td>
+                    <td><input type="text" class="things" style="width: 200px;"></td>
+                    <td><input type="number" class="howmany" style="width: 50px;"></td>
+                    <td><input type="number" class="cost" style="width: 75px;"></td>
+                    <td><input type="text" class="remarks" style="width: 95px;"></p></td>
+                </tr>
+            </table>
+            <p><input type="button" onclick="han()" value="反映する" class="btn"></p>
+            <p><input type="button" onclick="func_print()" value="印刷する" class="btn"></p>
+            <p><input type="button" onclick="addrow()" value="行追加" class="btn"></p>
+        </form>
+    </div>
+    <div class="printspace" id="PrintSpace">
+        <p class="title">生徒会費支出伝票（部費・委員会・その他）</p>
+        <p class="subtitle">令和　３　年度　　　　　　　　　　　　　　　　　　　　　　　　No.</p>
+        <table class="tab1" rules="all">
+            <tr>
+                <td>校長印</td><td></td><td>教頭印</td><td></td><td></td><td>事務長印</td><td></td><td>生徒会顧問印</td><td></td><td>生徒会会計印</td><td></td>
+            </tr>
+        </table>
+        <table class="tab2" border="1">
+            <tr>
+                <td colspan="6" align="center">部費　　委員会援助費　　その他（　　　　　　　）　　どれかに〇を付ける。</td>
+            </tr>
+            <tr>
+                <th class="ti1">団体名：</th>
+                <td id="team" class="ti2"></td>
+                <td class="ti3">前回までの残額</td>
+                <td class="ti4">￥</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="ti1">顧問指名：</th>
+                <td id="teacher" class="ti2"></td>
+                <td class="ti3">今回請求額</td>
+                <td class="ti4">￥</td>
+                <td id="mon" class="ti5"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th class="ti1">部長指名：</th>
+                <td id="captain" class="ti2"></td>
+                <td class="ti3">予算残額</td>
+                <td class="ti4">￥</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <table class="tab3" border="1" id="print">
+            <tr>
+                <th rowspan="10" class="ti7">請求書</th>
+                <th rowspan="8" class="ti8">内訳</th>
+                <th class="ti9" class="menu1">摘要</th>
+                <th class="ti10" class="menu1">数量</th>
+                <th class="ti11" class="menu1">単価</th>
+                <th class="ti12" class="menu1">小計</th>
+                <th class="ti13" class="menu1">備考</th>
+            </tr>
+            <tr>
+                <td class="thing">①</td>
+                <td class="quant"></td>
+                <td class="cos"></td>
+                <td class="subtotal"></td>
+                <td class="remark"></td>
+            </tr>
+            <tr>
+                <td class="thing">②</td>
+                <td class="quant"></td>
+                <td class="cos"></td>
+                <td class="subtotal"></td>
+                <td class="remark"></td>
+            </tr>
+            <tr>
+                <td class="thing">③</td>
+                <td class="quant"></td>
+                <td class="cos"></td>
+                <td class="subtotal"></td>
+                <td class="remark"></td>
+            </tr>
+            <tr>
+                <td class="thing">④</td>
+                <td class="quant"></td>
+                <td class="cos"></td>
+                <td class="subtotal"></td>
+                <td class="remark"></td>
+            </tr>
+            <tr>
+                <td class="thing">⑤</td>
+                <td class="quant"></td>
+                <td class="cos"></td>
+                <td class="subtotal"></td>
+                <td class="remark"></td>
+            </tr>
+            <tr>
+                <td class="thing">⑥</td>
+                <td class="quant"></td>
+                <td class="cos"></td>
+                <td class="subtotal"></td>
+                <td class="remark"></td>
+            </tr>
+            <tr>
+                <td class="thing">⑦</td>
+                <td class="quant"></td>
+                <td class="cos"></td>
+                <td class="subtotal"></td>
+                <td class="remark"></td>
+            </tr>
+            <tr>
+                <th colspan="4" align="right">合計　　</th>
+                <th colspan="2" align="left" id="Total">￥</th>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">埼玉県立八潮南高等学校長　様<br>上記金額を請求いたします。</td>
+                <td colspan="3" align="center" id="order_date2">令和　３　年　　　　月　　　　日</td>
+            </tr>
+        </table>
+        <table rules="all">
+            <tr>
+                <th rowspan="2" class="ti14">領収書</th>
+                <td rowspan="2" class="ti15" align="center">埼玉県立八潮南高等学校長　様<br>上記金額を領収いたしました。</td>
+                <td class="ti16" align="left" class="menu2">顧問指名</td>
+            </tr>
+            <tr>
+                <td class="ti16" align="left">＜受領日＞<br>　　令和　3　年　　　　月　　　　日</td>
+            </tr>
+        </table>
+        <p class="footer">※　請求書・納品書・領収書等については、裏面に貼付して下さい。</p>
+    </div>
+    <!--
+    <div class="data" id="Data" media="print">
+        <table border="1">
+            <tr>
+                <th class="day">申請日</th>
+                <th class="diff">種類</th>
+                <th class="things">内容</th>
+                <th class="toa">合計</th>
+                <th class="team">団体名</th>
+            </tr>
+        </table>
+    </div>
+    -->
+</body>
+</html>

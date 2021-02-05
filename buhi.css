@@ -1,0 +1,188 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/*全体の指定*/
+.form,
+.printspace,
+.data{
+    margin: 5px;
+    padding: 3px;
+    border: 1px solid;
+}
+
+/*フォームの指定*/
+.tab4{
+    border-collapse: collapse;
+    border-spacing: 0;  
+    vertical-align: middle;
+}
+
+.num{
+    width: 20px;
+    writing-mode: vertical-rl;
+}
+
+.btn{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*ボタン色*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+  }
+  .btn:active {
+    /*ボタンを押したとき*/
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*下に動く*/
+    border-bottom: none;/*線を消す*/
+  }
+
+@media print{
+    #Form,
+    #Data{
+        display: none;
+    }
+
+    #PrintSpace{
+        border: none;
+    }
+}
+
+/*印刷範囲の指定*/
+.printspace{
+    width: 780px;
+    height: 920px;
+    padding-top: 10px;
+}
+
+.title{
+    text-align: center;
+    font-size: 25px;
+}
+
+.subtitle,
+.printspace p{
+    text-align: center;
+}
+
+.printspace table{
+    margin: 0 auto;
+    margin-bottom: 25px;
+    width: 650px;
+    border: 2px solid black;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.tab1 td{
+    width: 55px;
+    height: 55px;
+    text-align: center;
+}
+
+.tab2 tr{
+    height: 30px;
+}
+
+.ti1{
+    width: 100px;
+    text-align: right;
+}
+
+.ti2{
+    width: 225px;
+    text-align: center;
+}
+
+.ti3{
+    width: 120px;
+}
+
+.ti4{
+    width: 20px;
+}
+
+.ti5{
+    width: 160px;
+}
+
+.tab3 th, td{
+    height: 30px;
+}
+
+.ti7{
+    width: 30px;
+    writing-mode: vertical-rl;
+}
+
+.ti8{
+    width: 30px;
+    writing-mode: vertical-rl;
+}
+/*摘要*/
+.ti9{
+    width: 200px;
+}
+/*数量*/
+.ti10{
+    width: 50px;
+}
+/*単価*/
+.ti11{
+    width: 75px;
+}
+/*小計*/
+.ti12{
+    width: 130px;
+}
+
+.ti14{
+    width: 30px;
+    writing-mode: vertical-rl;
+}
+
+.menu2{
+    height: 30px;
+}
+
+.ti15{
+    width: 310px;
+}
+
+.remark{
+    font-size: 10px;
+}
+
+.footer{
+    margin: 0 auto;
+    width: 630px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #c0c0c0;
+}
+
+/*引用データ表*/
+.day{
+    width: 70px;
+}
+
+.diff{
+    width: 150px;
+}
+
+.things{
+    width: 500px;
+}
+
+.toa{
+    width: 120px;
+}
+
+.team{
+    width: 100px;
+}
