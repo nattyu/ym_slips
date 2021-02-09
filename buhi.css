@@ -56,7 +56,7 @@ body{
 /*印刷範囲の指定*/
 .printspace{
     width: 780px;
-    height: 920px;
+    height: 1000px;
     padding-top: 10px;
 }
 
